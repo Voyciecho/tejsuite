@@ -5,27 +5,26 @@
 class Singleton
 {
 public:
-    static Singleton* getInstance();
+    static Singleton* getInstance(int id);
+    int getId() { return m_id; }
 
 private:
-    Singleton() {}
+    Singleton(int id) : m_id(id) {}
     static Singleton* m_singleton;
+    int m_id;
 };
 
 Singleton* Singleton::m_singleton = nullptr;
 
-Singleton* Singleton::getInstance()
+Singleton* Singleton::getInstance(int id)
 {
     if (m_singleton == nullptr)
-        m_singleton = new Singleton();
+        m_singleton = new Singleton(id);
 
     return m_singleton;
 }
 
 TEST(SingletonTests, SimpleSingletonTest)
 {
-    Singleton* s_ptr = Singleton::getInstance();
-    Singleton* ss_ptr = Singleton::getInstance();
-
-    EXPECT_EQ(s_ptr, ss_ptr);
+    EXPECT_EQ(Singleton::getInstance(1)->getId(), Singleton::getInstance(2)->getId());
 }
