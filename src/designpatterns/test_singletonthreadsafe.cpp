@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <thread>
+#include <mutex>
 #include <gtest/gtest.h>
 
 class Singleton
@@ -18,13 +19,17 @@ public:
 private:
     Singleton(int id) : m_id(id) {}
     static Singleton* m_singleton;
+    static std::mutex m_mtx;
     int m_id;
 };
 
 Singleton* Singleton::m_singleton = nullptr;
+std::mutex Singleton::m_mtx;
 
 Singleton* Singleton::getInstance(int id)
 {
+    std::lock_guard<std::mutex> lock(m_mtx);
+
     if (m_singleton == nullptr)
         m_singleton = new Singleton(id);
 
