@@ -11,6 +11,7 @@ add_executable(tejsuite
     multithread/test_condvariable.cpp
     multithread/test_condvariableeventclass.cpp
     multithread/test_future.cpp
+    designpatterns/test_singleton.cpp
 )
 
 target_link_libraries(tejsuite gtest)
