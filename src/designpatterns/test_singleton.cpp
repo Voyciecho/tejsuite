@@ -8,6 +8,12 @@ public:
     static Singleton* getInstance(int id);
     int getId() { return m_id; }
 
+    // Delete copy constructor
+    Singleton(Singleton& X) = delete;
+
+    // Delete assign operator
+    void operator=(Singleton&) = delete;
+
 private:
     Singleton(int id) : m_id(id) {}
     static Singleton* m_singleton;
