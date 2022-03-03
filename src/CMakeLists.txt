@@ -7,6 +7,7 @@ add_executable(tejsuite
     test_diamond.cpp
     test_fibonacci.cpp
     multithread/test_mutex.cpp
+    multithread/test_increment.cpp
     multithread/test_lockguard.cpp
     multithread/test_condvariable.cpp
     multithread/test_condvariableeventclass.cpp
