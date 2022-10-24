@@ -2,6 +2,8 @@
 #include <string>
 #include <gtest/gtest.h>
 
+namespace {
+
 struct Node
 {
     int *data;
@@ -121,7 +123,9 @@ std::string LinkedList::print() const
     return s;
 }
 
-TEST(SimpleTest, LinkedListTest) {
+}
+
+TEST(LinkedListTest, LinkedListReverseTest) {
 
     LinkedList list{};
 
